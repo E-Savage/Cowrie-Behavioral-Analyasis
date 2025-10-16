@@ -13,7 +13,9 @@ linkage_array = linkage(iris, method='average', metric="euclidean")
 
 # Plot the dendrogram
 dendrogram(linkage_array)
+plt.savefig("iris_dendrogram.png")
 plt.show()
+plt.savefig("iris_dendrogram1.png")
 
 # extract clusters from linkage array for a certain threshhold and then assign clusters to the data points
 cluster_assignments = fcluster(linkage_array, t=1.5, criterion='distance')
