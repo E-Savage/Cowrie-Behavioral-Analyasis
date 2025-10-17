@@ -142,4 +142,56 @@ plt.ylabel('Distance')
 plt.tight_layout()
 plt.show()
 
+# produce new scatter plots with filtered data 
+
+# sessions vs username_entropy
+plt.scatter(df_filtered['total_sessions'], df_filtered['username_entropy'], alpha=0.5)
+plt.title('Filtered: Total Sessions vs Username Entropy')
+plt.xlabel('Total Sessions')
+plt.ylabel('Username Entropy')
+plt.tight_layout()
+plt.show() 
+
+# sessions vs password_entropy
+plt.scatter(df_filtered['total_sessions'], df_filtered['password_entropy'], alpha=0.5)
+plt.title('Filtered: Total Sessions vs Password Entropy')
+plt.xlabel('Total Sessions')
+plt.ylabel('Password Entropy')
+plt.tight_layout()
+plt.show()
+
+# sessions vs command_entropy
+plt.scatter(df_filtered['total_sessions'], df_filtered['command_entropy'], alpha=0.5)
+plt.title('Filtered: Total Sessions vs Command Entropy')
+plt.xlabel('Total Sessions')
+plt.ylabel('Command Entropy')
+plt.tight_layout()
+plt.show() 
+
+
+# command entropy vs username_entropy
+plt.scatter(df_filtered['command_entropy'], df_filtered['username_entropy'], alpha=0.5)
+plt.title('Filtered: Command Entropy vs Username Entropy')
+plt.xlabel('Command Entropy')
+plt.ylabel('Username Entropy')
+plt.tight_layout()
+plt.show()
+
+# command entropy vs password_entropy
+plt.scatter(df_filtered['command_entropy'], df_filtered['password_entropy'], alpha=0.5)
+plt.title('Filtered: Command Entropy vs Password Entropy')
+plt.xlabel('Command Entropy')
+plt.ylabel('Password Entropy')
+plt.tight_layout()
+plt.show()
+
+# username_entropy vs password_entropy
+plt.scatter(df_filtered['username_entropy'], df_filtered['password_entropy'], alpha=0.5)
+plt.title('Filtered: Username Entropy vs Password Entropy')
+plt.xlabel('Username Entropy')
+plt.ylabel('Password Entropy')
+plt.tight_layout()
+plt.show()
+
+
 
