@@ -3,6 +3,11 @@ import numpy as np
 import matplotlib.pyplot as plt
 from scipy.cluster.hierarchy import linkage, dendrogram, fcluster
 import sys
+import os
+
+# Ensure output directory exists (corrected to 'october_17_2025')
+OUTPUT_DIR = 'plots/october_17_2025/clustering'
+os.makedirs(OUTPUT_DIR, exist_ok=True)
 
 df = pd.read_csv('datasets/ip_entropies.csv')
 
@@ -21,9 +26,10 @@ plt.imshow(corr_matrix, cmap='coolwarm', interpolation='nearest')
 plt.colorbar(label='Correlation Coefficient')
 plt.xticks(range(len(corr_matrix)), corr_matrix.columns, rotation=45 )
 plt.yticks(range(len(corr_matrix)), corr_matrix.columns)
-plt.title('Corralation Matrix')
+plt.title('Correlation Matrix')
 plt.tight_layout()
-plt.show()
+plt.savefig(os.path.join(OUTPUT_DIR, 'corr_matrix_all.png'), dpi=300)
+plt.close()
 
 # correlation matrix of total_sessions, username_entropy, password_entropy
 corr_matrix_subset = df[['total_sessions', 'username_entropy', 'password_entropy']].corr()
@@ -33,9 +39,10 @@ plt.imshow(corr_matrix_subset, cmap='coolwarm', interpolation='nearest')
 plt.colorbar(label='Correlation Coefficient')
 plt.xticks(range(len(corr_matrix_subset)), corr_matrix_subset.columns, rotation=45 )
 plt.yticks(range(len(corr_matrix_subset)), corr_matrix_subset.columns)
-plt.title('Subset Corralation Matrix')
+plt.title('Subset Correlation Matrix')
 plt.tight_layout()
-plt.show()
+plt.savefig(os.path.join(OUTPUT_DIR, 'corr_matrix_subset.png'), dpi=300)
+plt.close()
 
 # correlation of username_entropy, password_entropy, command_entropy
 corr_matrix_entropy = df[['username_entropy', 'password_entropy', 'command_entropy']].corr()
@@ -45,9 +52,10 @@ plt.imshow(corr_matrix_entropy, cmap='coolwarm', interpolation='nearest')
 plt.colorbar(label='Correlation Coefficient')
 plt.xticks(range(len(corr_matrix_entropy)), corr_matrix_entropy.columns, rotation=45 )
 plt.yticks(range(len(corr_matrix_entropy)), corr_matrix_entropy.columns)
-plt.title('Entropy Corralation Matrix')
+plt.title('Entropy Correlation Matrix')
 plt.tight_layout()
-plt.show()  
+plt.savefig(os.path.join(OUTPUT_DIR, 'corr_matrix_entropy.png'), dpi=300)
+plt.close()  
 
 # scatter plots
 # total_sessions vs username_entropy
@@ -56,7 +64,8 @@ plt.title('Total Sessions vs Username Entropy')
 plt.xlabel('Total Sessions')
 plt.ylabel('Username Entropy')
 plt.tight_layout()
-plt.show()
+plt.savefig(os.path.join(OUTPUT_DIR, 'scatter_total_sessions_vs_username_entropy.png'), dpi=300)
+plt.close()
 
 # total_sessions vs password_entropy
 plt.scatter(df['total_sessions'], df['password_entropy'], alpha=0.5)
@@ -64,7 +73,8 @@ plt.title('Total Sessions vs Password Entropy')
 plt.xlabel('Total Sessions')
 plt.ylabel('Password Entropy')
 plt.tight_layout()
-plt.show()
+plt.savefig(os.path.join(OUTPUT_DIR, 'scatter_total_sessions_vs_password_entropy.png'), dpi=300)
+plt.close()
 
 # total_sessions vs command_entropy
 plt.scatter(df['total_sessions'], df['command_entropy'], alpha=0.5)
@@ -72,7 +82,8 @@ plt.title('Total Sessions vs Command Entropy')
 plt.xlabel('Total Sessions')
 plt.ylabel('Command Entropy')
 plt.tight_layout()
-plt.show()
+plt.savefig(os.path.join(OUTPUT_DIR, 'scatter_total_sessions_vs_command_entropy.png'), dpi=300)
+plt.close()
 
 
 #-----------------------------------------
@@ -94,7 +105,8 @@ plt.title('Dendrogram of IP Profiles')
 plt.xlabel('Sample Index')
 plt.ylabel('Distance')
 plt.tight_layout()
-plt.show()
+plt.savefig(os.path.join(OUTPUT_DIR, 'dendrogram_all.png'), dpi=300)
+plt.close()
 
 # cut outlier out of the clusters
 distances = linkage_array[:, 2]
@@ -140,8 +152,8 @@ plt.title('Dendrogram of Filtered IP Profiles')
 plt.xlabel('Filtered Index')
 plt.ylabel('Distance')
 plt.tight_layout()
-plt.show()
-
+plt.savefig(os.path.join(OUTPUT_DIR, 'dendrogram_filtered.png'), dpi=300)
+plt.close()
 # produce new scatter plots with filtered data 
 
 # sessions vs username_entropy
@@ -150,7 +162,8 @@ plt.title('Filtered: Total Sessions vs Username Entropy')
 plt.xlabel('Total Sessions')
 plt.ylabel('Username Entropy')
 plt.tight_layout()
-plt.show() 
+plt.savefig(os.path.join(OUTPUT_DIR, 'filtered_total_sessions_vs_username_entropy.png'), dpi=300)
+plt.close() 
 
 # sessions vs password_entropy
 plt.scatter(df_filtered['total_sessions'], df_filtered['password_entropy'], alpha=0.5)
@@ -158,7 +171,8 @@ plt.title('Filtered: Total Sessions vs Password Entropy')
 plt.xlabel('Total Sessions')
 plt.ylabel('Password Entropy')
 plt.tight_layout()
-plt.show()
+plt.savefig(os.path.join(OUTPUT_DIR, 'filtered_total_sessions_vs_password_entropy.png'), dpi=300)
+plt.close()
 
 # sessions vs command_entropy
 plt.scatter(df_filtered['total_sessions'], df_filtered['command_entropy'], alpha=0.5)
@@ -166,7 +180,8 @@ plt.title('Filtered: Total Sessions vs Command Entropy')
 plt.xlabel('Total Sessions')
 plt.ylabel('Command Entropy')
 plt.tight_layout()
-plt.show() 
+plt.savefig(os.path.join(OUTPUT_DIR, 'filtered_total_sessions_vs_command_entropy.png'), dpi=300)
+plt.close() 
 
 
 # command entropy vs username_entropy
@@ -175,7 +190,8 @@ plt.title('Filtered: Command Entropy vs Username Entropy')
 plt.xlabel('Command Entropy')
 plt.ylabel('Username Entropy')
 plt.tight_layout()
-plt.show()
+plt.savefig(os.path.join(OUTPUT_DIR, 'filtered_command_entropy_vs_username_entropy.png'), dpi=300)
+plt.close()
 
 # command entropy vs password_entropy
 plt.scatter(df_filtered['command_entropy'], df_filtered['password_entropy'], alpha=0.5)
@@ -183,7 +199,8 @@ plt.title('Filtered: Command Entropy vs Password Entropy')
 plt.xlabel('Command Entropy')
 plt.ylabel('Password Entropy')
 plt.tight_layout()
-plt.show()
+plt.savefig(os.path.join(OUTPUT_DIR, 'filtered_command_entropy_vs_password_entropy.png'), dpi=300)
+plt.close()
 
 # username_entropy vs password_entropy
 plt.scatter(df_filtered['username_entropy'], df_filtered['password_entropy'], alpha=0.5)
@@ -191,7 +208,8 @@ plt.title('Filtered: Username Entropy vs Password Entropy')
 plt.xlabel('Username Entropy')
 plt.ylabel('Password Entropy')
 plt.tight_layout()
-plt.show()
+plt.savefig(os.path.join(OUTPUT_DIR, 'filtered_username_entropy_vs_password_entropy.png'), dpi=300)
+plt.close()
 
 
 
