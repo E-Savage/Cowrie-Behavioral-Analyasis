@@ -137,6 +137,8 @@ cols = ['total_sessions', 'username_entropy', 'password_entropy', 'command_entro
 
 # removing any NAN just for safety 
 filtered_data = df_filtered[cols].dropna().values
+filtered_dataframe = pd.DataFrame(filtered_data, columns=cols)
+filtered_dataframe.to_csv("datasets/filtered_data.csv", index=False)
 
 # recompute linkage for the new dendrogram
 linkage_array_filtered = linkage(filtered_data, method='average', metric='euclidean')
