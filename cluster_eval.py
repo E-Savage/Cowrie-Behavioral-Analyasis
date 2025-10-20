@@ -11,7 +11,7 @@ linkage_array = linkage(df.values, method='average', metric='euclidean')
 silhouette_avgs = []
 davies_bouldin_avgs = []
 
-for k in range(2, 20):
+for k in range(2, 21):
     cluster_labels = fcluster(linkage_array, t=k, criterion='maxclust')
     
     silhouette_avg = silhouette_score(df.values, cluster_labels)
@@ -25,13 +25,13 @@ for k in range(2, 20):
 
 plt.figure(figsize=(12, 5))
 plt.subplot(1, 2, 1)
-plt.plot(range(2, 20), silhouette_avgs, marker='o')
+plt.plot(range(2, 21), silhouette_avgs, marker='o')
 plt.title('Silhouette Score vs Number of Clusters')
 plt.xlabel('Number of Clusters')
 plt.ylabel('Silhouette Score')
 plt.grid()
 plt.subplot(1, 2, 2)
-plt.plot(range(2, 20), davies_bouldin_avgs, marker='o', color='orange')
+plt.plot(range(2, 21), davies_bouldin_avgs, marker='o', color='orange')
 plt.title('Davies-Bouldin Score vs Number of Clusters')
 plt.xlabel('Number of Clusters')
 plt.ylabel('Davies-Bouldin Score')
