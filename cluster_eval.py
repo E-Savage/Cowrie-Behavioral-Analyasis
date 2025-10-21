@@ -37,6 +37,7 @@ plt.xlabel('Number of Clusters')
 plt.ylabel('Davies-Bouldin Score')
 plt.grid()
 plt.tight_layout()
+plt.savefig('plots/eval/cluster_evaluation_scores.png', dpi=300, bbox_inches='tight')
 plt.show()
 
 
@@ -52,9 +53,10 @@ plt.title('Dendrogram of Filtered IP Profiles')
 plt.xlabel('Filtered Index')
 plt.ylabel('Distance')
 plt.tight_layout()
+plt.savefig('plots/eval/dendrogram_filtered.png', dpi=300, bbox_inches='tight')
 plt.show()
 
-labels = fcluster(linkage_array, t=5, criterion='maxclust')
+labels = fcluster(linkage_array, t=3, criterion='maxclust')
 df['cluster'] = labels
 
 print(df['cluster'].value_counts())
