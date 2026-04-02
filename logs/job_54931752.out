@@ -1,0 +1,5 @@
+Loaded 5078 records from ./datasets/ip_entropies.csv
+Phase 1: Testing k=2-10 for both Scaling Methods (100 seeds each)...
+Optimal Configuration: Normalization with k=5 (Mean Silhouette: 0.7644)
+Workflow complete. Results saved in 'robust_k_comparison_results'.
+Job completed successfully at Thu Apr  2 03:00:19 PM UTC 2026
