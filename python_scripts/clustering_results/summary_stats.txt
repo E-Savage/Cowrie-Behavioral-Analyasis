@@ -1,5 +1,10 @@
-Robustness Summary (k=4)
-========================================
-Standardization Mean: 0.6981 (Std: 0.0198)
-Normalization Mean: 0.7577 (Std: 0.0172)
-WINNER: Normalization
+1. selecting K
+  - Optimal K: 10
+  - Mean Silhouette: 0.7222
+  - Score Variance (StdDev): 0.008459
+
+2. Robustness Summary (k=4)
+  - ========================================
+  - Standardization Mean: 0.7222 (Std: 0.0085)
+  - Normalization Mean: 0.7636 (Std: 0.0064)
+  - WINNER: Normalization
