@@ -3,4 +3,4 @@ Ph.D. Comprehensive Clustering Validation
 Winning Method: Normalization
 Optimal K:      5
 Mean Score:     0.7644
-Total Time:     764.40s
+Total Time:     972.80s

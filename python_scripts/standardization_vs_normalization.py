@@ -134,7 +134,7 @@ plt.xlabel('Number of Clusters (k)')
 plt.ylabel('Mean Silhouette Score (+/- Std Dev)')
 plt.legend()
 plt.grid(True, alpha=0.3)
-plt.savefig(f"{OUTPUT_DIR}/k_comparison_scaling_plot.pdf")
+plt.savefig(f"{OUTPUT_DIR}/k_comparison_scaling_plot.png")
 
 script_end = time.time()
 with open(f"{OUTPUT_DIR}/phd_validation_report.txt", "w") as f:
